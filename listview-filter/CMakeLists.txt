@@ -19,8 +19,6 @@ set(PROJECT_SOURCES
         qml.qrc
 )
 
-# find_package(Qt5QmlImportScanner REQUIRED)
-
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(listview-filter
         ${PROJECT_SOURCES}

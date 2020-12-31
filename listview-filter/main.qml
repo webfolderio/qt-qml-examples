@@ -12,6 +12,7 @@ Window {
     title: qsTr("Address Book")
 
     Component.onCompleted: {
+        // center the window
         x = Screen.width / 2 - width / 2
         y = Screen.height / 2 - height / 2
     }
@@ -44,6 +45,8 @@ Window {
 
         groups: [
             DelegateModelGroup {
+                // set initial visibility
+                // all items visible by default
                 includeByDefault: true
                 name: "visible"
             }
@@ -93,13 +96,14 @@ Window {
             TextField {
                 id: txtSearch
                 Layout.fillWidth: true
-                placeholderText: "search"
+                placeholderText: "Search name"
                 Layout.preferredHeight: 28
                 inputMethodHints: "ImhNoPredictiveText"
                 width: wnd.width
                 text: ""
                 focus: false
                 onTextChanged: {
+                    // hide the item if it's name doesn't match with the search criteria
                     for (var i = 0; i < addressBookModel.count; i++) {
                         adressBookDelegateModel.items.get(i).inVisible =
                                 addressBookModel.get(i).name.toLowerCase().match(txtSearch.text.toLowerCase())
